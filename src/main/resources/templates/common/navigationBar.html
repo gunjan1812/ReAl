@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="header">
+<head>
+    <link rel="icon" th:href="@{/favicon.png}" />
+    <link rel="stylesheet" th:href="@{/stylesheet/navBar.css}" />
+    <link rel="stylesheet" th:href="@{/stylesheet/standards.css}" />
+    <style type="text/css">
+        .nav-links{
+        }
+    </style>
+</head>
+<body>
+<div id="mySidenav" class="sidenav" style="width: 250px; display: none">
+    <div class="std-col-12" >
+        <a href="/">Home</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/locks">Hardware and Locks</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/restaurantnew">Restaurant</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/shopnew">Shopping</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/hotel">Hotels</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/event">Events</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/study">Education</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/attraction">Attraction</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/contactus">Contact Us</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/about">About Us</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/aboutaligarh">About Aligarh</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/famewall">Testimonials</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/honour">Heroes from Aligarh</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/podUpdated">Picture of the Day</a>
+    </div>
+
+    <div class="std-col-12">
+        <a href="/recipe">Recipe Of the Week</a>
+    </div>
+</div>
+<div class="topnav" id="myTopnav">
+    <!--<span style="font-size:30px;cursor:pointer; float: left; color: white; padding-left: 1%;" onclick="openNav()">&#9776;</span>-->
+    <div class="containerNav" onclick="myFunctionz(this);openNav()">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <a href="/">Home</a>
+    <a href="/contactus">Contact Us</a>
+    <a href="/about">About Us</a>
+    <a href="/aboutaligarh">About Aligarh</a>
+    <a href="/famewall">Testimonials</a>
+    <!--<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>-->
+</div>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+<script>
+    function myFunctionz(x) {
+        x.classList.toggle("change");
+    }
+</script>
+
+<script>
+    var count=0;
+    function openNav() {
+        var x = document.getElementById('mySidenav');
+        if (x.style.display === 'none') {
+            x.style.display = 'block';
+        } else {
+            x.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>

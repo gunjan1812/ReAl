@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA-67859015-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-67859015-2');
+    </script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Events Section</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/events.css}"/>
+    <link rel="stylesheet" th:href="@{/stylesheet/standards.css}"/>
+    <script th:src="@{/javascript/event.js}"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        $(document).ready(function () {
+            var $item = $('div.item'), //Cache your DOM selector
+                visible = 2, //Set the number of items that will be visible
+                index = 0, //Starting index
+                endIndex = ( $item.length / visible ) - 1; //End index (NOTE:: Requires visible to be a factor of $item.length... You can improve this by rounding...)
+
+            $('div#arrowR').click(function () {
+                if (index < endIndex) {
+                    index++;
+                    $item.animate({'left': '-=300px'});
+                }
+            });
+
+            $('div#arrowL').click(function () {
+                if (index > 0) {
+                    index--;
+                    $item.animate({'left': '+=300px'});
+                }
+            });
+        });
+        /*]]>*/
+    </script>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        function openTabHeader(cityName, elmnt, fontWeight) {
+            // Hide all elements with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabHeader");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Remove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.fontWeight = "normal";
+            }
+
+            // Show the specific tab content
+            document.getElementById(cityName).style.display = "block";
+
+            // Add the specific color to the button used to open the tab content
+            elmnt.style.fontWeight = fontWeight;
+            elmnt.style.ac
+        }
+
+        /*]]>*/
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        function openTab(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        /*]]>*/
+    </script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        function handleOpenClose(evt, openCloseAction) {
+            // Declare all variables
+            var i, divcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            divcontent = document.getElementsByClassName("inner-hidden-container");
+            for (i = 0; i < divcontent.length; i++) {
+                divcontent[i].style.display = "none";
+            }
+            document.getElementById(openCloseAction).style.display = "block";
+        }
+
+        /*]]>*/
+    </script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var index = 1;
+
+        function plusIndex(n) {
+            index = index + 1;
+            showImage(index);
+        }
+
+        function showImage(n) {
+            var i;
+            var x = document.getElementsByName("slides");
+            if (n > x.length) {
+                index = 1
+            }
+            if (n < 1) {
+                index = x.length
+            }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none"
+            }
+            x[index - 1].style.display = "block";
+        }
+
+        autoSlide();
+
+        function autoSlide() {
+            var i;
+            var x = document.getElementsByClassName("slides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none"
+            }
+            if (index > x.length) {
+                index = 1
+            }
+            x[index - 1].style.display = "block";
+            index++;
+            setTimeout(autoSlide, 2000);
+        }
+
+        /*]]>*/
+    </script>
+</head>
+<body style="background-color: #e5e5e5">
+<div class="std-header">
+    <div th:replace="/common/navigationBar :: header"/>
+</div>
+
+<div class="std-top-row">
+
+    <!--Start Slideshow Banner-->
+    <div class="std-section-bleed">
+        <section id="header1">
+            <div id="container">
+                <img name="slides" src="/images/events8.jpg"/>
+                <img name="slides" class="slides" src="/images/events9.jpg"/>
+                <img name="slides" class="slides" src="/images/events10.jpg"/>
+                <img name="slides" class="slides" src="/images/events11.jpg"/>
+                <img name="slides" class="slides" src="/images/events12.jpg"/>
+                <button class="btn" id="btn1" onclick="plusIndex(-1)">&#10094;</button>
+                <button class="btn" id="btn2" onclick="plusIndex(1)">&#10095;</button>
+            </div>
+        </section>
+    </div>
+    <!--End Slideshow Banner-->
+
+    <!--Start first row-->
+    <div class="std-section-bleed">
+
+        <!--Start Tabs-->
+        <div class="tab">
+            <button class="tablink" onclick="openTab(event, 'div1'), openTabHeader('header1',this,'bold')"
+                    id="defaultOpen">
+                Public
+            </button>
+            <button class="tablink" onclick="openTab(event, 'div2'), openTabHeader('header2',this,'bold')">Private
+            </button>
+        </div>
+        <!--End Tabs-->
+
+        <!--Start four column section-->
+        <div id="div1" class="tabcontent std-section-fullWidth">
+            <script>
+                // Get the element with id="defaultOpen" and click on it
+                document.getElementById("defaultOpen").click();
+            </script>
+
+            <!--Start of Scrolling 4-col Container-->
+            <div class="std-section-fullWidth">
+                <div class="horizontal-scroll-wrapper">
+                    <div th:each="event : ${events}" th:if="${event.open}==true" class="event-container-item">
+                        <div data-content="Check-Out!" class="image">
+                            <img th:src="@{'/images/events/' + ${event.name} + '.jpeg'}"/>
+                        </div>
+                        <div class="event-type">
+                            <p th:text="${event.eventType}">Adventures</p>
+                        </div>
+                        <div class="one-fourth-caption" th:text="${event.description}">
+                        </div>
+                        <div class="one-fourth-caption" th:text="${event.eventDate}" style="margin-bottom: 5px">
+                        </div>
+                        <button th:onclick="'javascript:handleOpenClose(event,\'' + ${event.eventId} + '\');'"
+                                class="button">View Details &rarr;
+                        </button>
+                        <span class="std-ribbon" title="Featured Event"
+                              th:text="(${event.featured} ? 'Featured' : 'Normal')"></span>
+                    </div>
+                </div>
+            </div>
+            <!--End Scrolling 4-col Container-->
+
+        </div>
+        <!--End four column section-->
+
+        <div id="div2" class="tabcontent std-section-fullWidth">
+            <!--Start of Scrolling 4-col Container-->
+            <div class="std-section-fullWidth">
+                <div class="horizontal-scroll-wrapper">
+                    <div th:each="event : ${events}" th:if="${event.open}==false" class="event-container-item">
+                        <div data-content="Check-Out!" class="image">
+                            <img th:src="@{'/images/events/' + ${event.name} + '.jpeg'}"/>
+                        </div>
+                        <div class="event-type">
+                            <p th:text="${event.eventType}">Adventures</p>
+                        </div>
+                        <div class="one-fourth-caption" th:text="${event.description}">
+                        </div>
+                        <div class="one-fourth-caption" th:text="${event.eventDate}" style="margin-bottom: 5px">
+                        </div>
+                        <button th:onclick="'javascript:handleOpenClose(event,\'' + ${event.eventId} + '\');'"
+                                class="button">View Details &rarr;
+                        </button>
+                        <span class="std-ribbon" title="Featured Event"
+                              th:text="(${event.featured} ? 'Featured' : 'Normal')"></span>
+                    </div>
+
+
+                </div>
+            </div>
+            <!--End Scrolling 4-col Container-->
+        </div>
+
+    </div>
+    <!--End first row-->
+
+    <div class="std-col-12">
+        <div th:each="event : ${events}" class="inner-hidden-container inner-wrapper-2" th:attr="id=${event.eventId}">
+            <div th:if="${event.eventId}%2!=0">
+                <article class="std-padding-apply">
+                    <h2 th:text="${event.eventDate}"/>
+                    <p th:text="${event.description}"><br/></p>
+                    <p th:text="${event.longDescription}"/>
+                    <div class="btn-container">
+                        <button onclick="document.getElementById('myModal').style.display='block'"
+                                class="button">
+                            For More Info
+                        </button>
+                    </div>
+                </article>
+                <aside class="hand-mobile">
+                    <div class="hero-image"
+                         th:style="|background-image:url(@{'/images/events/'+${event.name}+'.jpeg'})|"/>
+                </aside>
+            </div>
+            <div th:if="${event.eventId}%2==0">
+                <article class="hand-mobile">
+                    <div class="hero-image"
+                         th:style="|background-image:url(@{'/images/events/'+${event.name}+'.jpeg'})|"/>
+                </article>
+                <aside class="std-padding-apply">
+                    <h2 th:text="${event.eventDate}"/>
+                    <p th:text="${event.description}"><br/></p>
+                    <p th:text="${event.longDescription}"/>
+                    <div class="btn-container">
+                        <button onclick="document.getElementById('myModal').style.display='block'"
+                                class="button">
+                            For More Info
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <!--End main two column sections-->
+    </div>
+    <!--End hidden divs-->
+
+    <!--End main two column sections-->
+    <div class="inner-wrapper-3">
+        <section class="one-third" id="google">
+            <h2>David Guetta</h2>
+            <div class="iframe">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/sSX9YlNuUpc?start=190"
+                        frameborder="0"></iframe>
+            </div>
+        </section>
+        <section class="one-third" id="marketing">
+            <h2>Armin Van Buuren</h2>
+            <div class="iframe">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/qkIvs6Z-5Ms?start=370"
+                        frameborder="0"></iframe>
+            </div>
+        </section>
+        <section class="one-third" id="customers">
+            <h2>Tomorrowland Aftermovie</h2>
+            <div class="iframe">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/6dVFy4d61gU?start=40"
+                        frameborder="0"></iframe>
+            </div>
+        </section>
+    </div>
+
+</div>
+<!--End of 1st fragment-->
+
+
+<div style="width: 100%">
+    <div th:replace="/common/footer :: footer"/>
+</div>
+</body>
+</html>

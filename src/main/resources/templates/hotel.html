@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA-67859015-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-67859015-2');
+    </script>
+
+    <title>Hotels</title>
+    <!--<link rel='stylesheet' href='/stylesheets/shop.css'/>-->
+    <link rel="stylesheet" th:href="@{/stylesheet/standards.css}" />
+    <link rel="stylesheet" th:href="@{/stylesheet/style.css}" />
+    <link rel="stylesheet" th:href="@{/stylesheet/hotel.css}" />
+    <link rel="stylesheet" th:href="@{/stylesheet/modal.css}" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+</head>
+
+<body>
+
+<div class="std-top-row">
+    <div class="std-col-12">
+        <div class="std-section-bleed">
+            <img class="hotelsbackground" src="images/hotel4.jpg"/>
+            <!--<div class="hotelsbackground"></div>-->
+        </div>
+
+        <section>
+            <div id="section1" class="tabs">
+                <nav>
+                    <ul>
+                        <li><a href="#section-1" class="icon-shop"
+                               style="color: yellow"><span>Luxury Hotels</span></a>
+                        </li>
+                        <li><a href="#section-2" class="icon-cup"
+                               style="color: yellow"><span>Primium Hotels</span></a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="content">
+                    <section id="section-1">
+                        <div class="std-col-t-3 mediabox res-div-temp">
+                            <img src="images/palmtree.jpg" alt="Hotel Palm Tree"/>
+                            <h3>Hotel Palm Tree</h3>
+                            <p>Where Hospitality Meets the Bay.</p>
+                            <!--<button class="button button-blue" onclick="fullerimage()">View</button>-->
+                            <a class="button button-blue" id="bttn1">View</a>
+                        </div>
+                        <div class="std-col-t-3 mediabox res-div-temp">
+                            <img src="images/room1-min.jpg" alt="img02"/>
+                            <h3>Coming Soon</h3>
+                            <p>Unpretentiously luxurious.</p>
+                            <button class="button button-purple" onclick="window.open('/comingsoon')">View</button>
+                        </div>
+                        <div class="std-col-t-3 mediabox res-div-temp">
+                            <img src="images/room2-min.jpg" alt="img03"/>
+                            <h3>Coming Soon</h3>
+                            <p>We put a smile back on your face.</p>
+                            <button class="button button-gray" onclick="window.open('/comingsoon')">View</button>
+                        </div>
+                    </section>
+                    <section id="section-2">
+                        <div class="std-col-t-3 mediabox res-div-temp">
+                            <img src="images/melroseinn.jpg" alt="img04"/>
+                            <h3>Hotel Melrose-inn</h3>
+                            <p>Stay with us, and feel like home…</p>
+                            <a class="button button-orange" id="bttn2">View</a>
+                        </div>
+                        <div class="std-col-t-3 mediabox res-div-temp">
+                            <img src="images/room7-min.jpg" alt="img05"/>
+                            <h3>Coming Soon</h3>
+                            <p>Find your Freedom!</p>
+                            <button class="button button-darkblue" onclick="window.open('/comingsoon')">View</button>
+                        </div>
+                        <div class="std-col-t-3 mediabox res-div-temp">
+                            <img src="images/room5-min.jpg" alt="img06"/>
+                            <h3>Coming Soon</h3>
+                            <p>Your Host from Coast to Coast.</p>
+                            <button class="button button-pink" onclick="window.open('/comingsoon')">View</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+</body>
+</html>

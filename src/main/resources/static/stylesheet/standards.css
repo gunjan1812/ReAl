@@ -1,0 +1,835 @@
+/*Standard CSS*/
+
+
+/*Handling typography: Default font sizes
+-----------------------------------------------------------------------------*/
+
+h1 {font-size: 2.2em;}
+
+h2 {font-size: 2.0em;}
+
+h3 {font-size: 1.1rem;}
+
+h4 {font-size: 0.75rem;}
+
+h5 {font-size: 1.4em;}
+
+p {font-size: 1.2em;}
+
+a {text-decoration: none;}
+
+.std-div-inside-border{
+    outline: 1px darkgrey;
+    outline-offset: -5px;
+    outline-style: solid;
+}
+
+.table{
+    display: table;
+}
+
+.table-cell{
+    display: table-cell;
+}
+
+/*Wide Letter Spacing*/
+.std-wide{
+   letter-spacing: 4px;
+}
+
+.std-left {
+    float: left !important
+}
+
+.std-right {
+    float: right !important
+}
+
+.std-margin {
+    margin: 16px !important
+}
+
+.std-margin-small {
+    margin: 6px !important
+}
+
+.std-margin-top {
+    margin-top: 16px !important
+}
+
+.std-margin-bottom {
+    margin-bottom: 16px !important
+}
+
+.std-margin-left {
+    margin-left: 16px !important
+}
+
+.std-margin-right {
+    margin-right: 16px !important
+}
+
+.std-padding-small {
+    padding: 4px 8px !important
+}
+
+.std-padding {
+    padding: 8px 16px !important
+}
+
+.std-padding-apply {
+    padding: 0.5rem 0.75rem !important
+}
+
+.std-padding-large {
+    padding: 12px 24px !important
+}
+
+.std-wrap-normal{
+    white-space: normal;
+ }
+
+/* Remove padding and margin */
+.removeAll{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.white{
+    color: white;
+}
+
+.black{
+    color: #000;
+}
+
+.std-div-black{
+    background-color: #000;
+}
+
+.std-div-white{
+    background-color: #ffffff;
+}
+
+.child-white > * {
+    background-color: white;
+}
+
+/*Classes for floating and clearing
+-----------------------------------------------------------------------------*/
+.clear {clear:both;}
+
+.right {float: right;}
+
+.left {float: left;}
+
+/* Tables
+-----------------------------------------------------------------------------*/
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+td {
+    text-align: left;
+    font-weight: normal;
+}
+
+.center{
+    margin: 0 auto; // top, bottom - and left, right values, respectively.
+}
+
+.center-vertical{
+    margin: auto 0;
+}
+
+
+/* Text Transformation
+-----------------------------------------------------------------------------*/
+
+.lowerCase{
+    text-transform: lowercase;
+}
+
+.upperCase{
+    text-transform: uppercase;
+}
+
+/*IMAGES*/
+img {
+    width: 100%;
+    height: auto;
+}
+
+/*VIDEOS*/
+video {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Body Content
+-----------------------------------------------------------------------------*/
+body {
+    font: 62.5%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
+    /*background-image: url(/images/events12.jpg) repeat;  !*change to background in order to work*!*/
+    background-size: cover;
+    color: #000000;
+    text-align:center;
+}
+
+#wrapper {
+    width:980px;
+    text-align:left;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #FFFFFF;
+}
+
+
+/* The hero image */
+.hero-image {
+    /* The image used */
+    background-image: url('../images/educationBanner3.jpg');
+
+    /* Set a specific height */
+    height: 100%;
+    padding: 20%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+    text-align: center;
+    position: absolute;
+    font-family: "Distro Heavy", Helvetica, Arial, sans-serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.hero-text, h1{
+    font-size: x-large;
+}
+
+.hero-text, h3{
+    font-size: larger;
+}
+
+.hero-text button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 0 45px;
+    color: white;
+    background-color: #000000;
+    text-align: center;
+    cursor: pointer;
+}
+
+.hero-text button:hover {
+    background-color: #555;
+    color: white;
+}
+
+
+/* Slideshow container
+-----------------------------------------------------------------------------*/
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+}
+
+/* Next & previous buttons */
+.prev-btn, .next-btn{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Position the "next button" to the right */
+.next-btn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev-btn:hover, .next-btn:hover{
+    background-color: rgba(999,2,3,0.8);
+}
+
+.slides {
+    display:none;
+}
+
+
+.slides > img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor:pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/*BoxShadow Effect
+-----------------------------------------------------------------------------*/
+.boxshadow {
+    position: relative;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    padding: 10px;
+    background: white;
+}
+
+.boxshadow img {
+    width: 100%;
+    border: 1px solid #8a4419;
+    border-style: inset;
+}
+
+.boxshadow::after {
+    content: '';
+    position: absolute;
+    z-index: -1; /* hide shadow behind image */
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+    width: 70%;
+    left: 15%; /* one half of the remaining 30% */
+    height: 100px;
+    bottom: 0;
+}
+
+/*Parallax Effect
+-----------------------------------------------------------------------------*/
+.std-parallax{
+    /*min-height: 500px;*/
+    position: relative;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Accordian
+-----------------------------------------------------------------------------*/
+button.std-accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.std-accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.std-accordion.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+button.std-accordion.active, button.std-accordion:hover {
+    background-color: #ddd;
+}
+
+div.std-panel{
+    display: none;
+    background-color: white;
+    padding: 0 18px;
+}
+
+/* One fourth Cards
+-----------------------------------------------------------------------------*/
+.std-one-fourth-card{
+    float: left;
+    margin: 0;
+    width: 100%;
+    padding: 0 0.5%;
+    border: 1px solid #ddd;
+    background: #fff;
+    box-shadow: 2px 2px 2px #ccc;
+    padding-top: 10px;
+    border-left: 5px solid #675765;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    max-height: 600px;
+    transition: transform linear 0.2s;
+}
+.std-one-fourth-card:hover{
+    box-shadow: 4px 4px 4px #ccc;
+    transform: scale(1.1);
+}
+
+iframe{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    scrolling: no;
+    frameborder:0;
+    allowTransparency:true;
+    allowFullScreen:true;
+}
+
+/* Buttons
+-----------------------------------------------------------------------------*/
+.button{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: inherit;
+    line-height: 35px;
+    padding: 0 20px;
+    font-size: 13px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.4);
+    background-clip: padding-box;
+    border: 1px solid;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #47494f;
+    border-color: #2f3034 #2f3034 #232427;
+    -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 1px 2px rgba(0, 0, 0, 0.25);
+    background-image: linear-gradient(to bottom, #55585f, #47494f 66%, #3d3f44);
+}
+
+.button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    background-image: radial-gradient(center top, farthest-corner, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+}
+.button:hover:before {
+    background-image: radial-gradient(farthest-corner, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
+}
+.button:active {
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.button:active:before {
+    content: none;
+}
+
+/* Box Sizing Content
+-----------------------------------------------------------------------------*/
+
+*{
+    box-sizing: border-box;
+}
+
+.std-horizontal-scroll{
+
+    /*overflow-x: auto;*/
+    /*position:relative;*/
+    /*max-height: 120px;*/
+    overflow-x: auto;
+    width: 500px;
+    height: 210px;
+}
+
+.std-section-fullWidth{
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+}
+
+/* For mobile phones: */
+
+[class*="std-col-"] {
+    float: left;
+    padding: 10px !important;
+    /*border: 1px solid red;*/
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/* Rows
+-----------------------------------------------------------------------------*/
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+
+.std-top-row{
+    padding-top: 14.2%;
+}
+
+.headerImage{
+    height: 30rem;
+    background-size: cover;
+    background: no-repeat;
+    max-width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    background-color :#a2b1c1;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+li:hover {
+    background-color: #0099cc;
+}
+
+.aside {
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#footer{
+    position:relative;
+    bottom:0;
+}
+
+.std-display-middle{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.std-curved-box{
+    border-radius: 70px;
+}
+
+.std-min-opacity{
+    opacity: 0.75;
+}
+
+/*-----------------------------------------------------------------------------
+ARROWS SYMBOLS
+-----------------------------------------------------------------------------*/
+
+.std-arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    border-bottom: 20px solid black;
+}
+
+.std-arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    border-top: 20px solid #f00;
+}
+
+.std-arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+
+    border-left: 20px solid green;
+}
+
+.std-arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+
+    border-right:20px solid blue;
+}
+
+.std-ribbon{
+    background-color: #ffa907;
+    box-shadow: inset 0 3px 10px #FF8500;
+    -moz-box-shadow: inset 0 3px 10px #FF8500;
+    -webkit-box-shadow: inset 0 3px 10px #FF8500;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    padding: 2px 10px;
+    position: absolute;
+    top: 6px;
+    right: -6px;
+    z-index: 2;
+}
+
+/*-----------------------------------------------------------------------------*/
+
+
+/*-----------------------------------------------------------------------------*/
+/* MEDIA QUERIES
+-----------------------------------------------------------------------------*/
+
+@media only screen and (min-width: 375px) {
+    .std-top-row{
+        padding-top: 5%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .std-col-t-1 {width: 8.33%;}
+    .std-col-t-2 {width: 16.66%;}
+    .std-col-t-3 {width: 25%;}
+    .std-col-t-4 {width: 33.33%;}
+    .std-col-t-5 {width: 41.66%;}
+    .std-col-t-6 {width: 50%;}
+    .std-col-t-7 {width: 58.33%;}
+    .std-col-t-8 {width: 66.66%;}
+    .std-col-t-9 {width: 75%;}
+    .std-col-t-10 {width: 83.33%;}
+    .std-col-t-11 {width: 91.66%;}
+    .std-col-t-12 {width: 100%;}
+    .std-top-row{
+        padding-top: 6.9%;
+    }
+    /* For mobile phones: */
+
+    [class*="std-col-"] {
+        float: left;
+        /*padding: 10px !important;*/
+        /*border: 1px solid red;*/
+    }
+
+    .std-one-fourth-card{
+        width: 48%;
+        margin: 1%;
+    }
+
+    .hero-text{
+        font-size: 40px;
+    }
+
+    .hero-sub-text{
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+
+    h4 {font-size: 1rem;}
+
+    .slides{
+        height: 40rem;
+    }
+
+    .std-section-bleed{
+        width: 100%;
+    }
+
+    /*12 Column Section*/
+
+    .std-section-fullWidth{
+        width: 94%;
+        float: left;
+        margin: 0 3%;
+    }
+
+    .std-col-12{
+        width: 100%;
+        float: left;
+    }
+
+    /*11 Column Section*/
+    .std-col-11{
+        width: 91.666666%;
+        float: left;
+    }
+
+    /*10 Column Section*/
+    .std-col-10{
+        width: 83.333333%;
+        float: left;
+    }
+
+    /*9 Column Section*/
+    .std-col-9{
+        width: 75%;
+        float: left;
+    }
+
+    /*8 Column Section*/
+    .std-col-8{
+        width: 66.666666%;
+        float: left;
+    }
+
+    /*7 Column Section*/
+    .std-col-7{
+        width: 58.333333%;
+        float: left;
+    }
+
+    /*6 Column Section*/
+    .std-col-6{
+        width: 50%;
+        float: left;
+    }
+
+    /*4 Column Section*/
+    .std-col-5{
+        width: 41.666666%;
+        float: left;
+    }
+
+    /*4 Column Section*/
+    .std-col-4{
+        width: 33.3333333%;
+        float: left;
+    }
+
+    /*3 Column Section*/
+    .std-col-3{
+        width: 25%;
+        float: left;
+    }
+
+    /*2 Column Section*/
+    .std-col-2{
+        width: 16.6666666%;
+        float: left;
+    }
+
+    .std-col-1 {
+        width: 8.33333333%;
+        float:left;
+    }
+
+    .headerImage{
+        /*height: 70em;*/
+        min-height: 40rem;
+        /*background-size: contain;*/
+    }
+    .std-top-row{
+        padding-top: 3.2%;
+        /*float: none;*/
+    }
+    .std-one-fourth-card{
+        width: 31%;
+        margin: 1%;
+    }
+
+    .hero-text{
+        font-size: 80px;
+    }
+
+    .hero-text{
+        font-size: 30px;
+    }
+}
+
+/* Turn off parallax scrolling for tablets and phones. Increase/decrease the pixels if needed */
+@media only screen and (max-device-width: 1024px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px
+    }
+}
+@media only screen and (orientation: landscape) {
+    body {
+        /*background-image: url('../images/fulls/02.jpg');*/
+    }
+}
+
+

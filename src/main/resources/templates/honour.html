@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Our Heroes</title>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/stylesheet/standards.css}" />
+    <link rel="stylesheet" th:href="@{/stylesheet/honour.css}" />
+    <link rel="stylesheet" th:href="@{/stylesheet/events.css}" />
+    <link rel="stylesheet" th:href="@{/stylesheet/events.css}" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+</head>
+<body>
+
+<!--<div>-->
+    <!--<% include template/navigationBar.ejs %>-->
+<!--</div>-->
+
+<div class="std-top-row">
+    <h4><strong>Our Heroes - You made us Proud!!</strong></h4>
+    <br/>
+
+    <div class="std-section-fullWidth" style="border: groove;">
+        <div class="std-col-12 max-ht">
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/Annu-Raj-Singh..jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img1">ANNU RAJ SINGH</div>
+                </div>
+            </div>
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/bharat-bhushan.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img2">BHARAT BHUSHAN</div>
+                </div>
+            </div>
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/piyushcricketer.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img3">PIYUSH CHAWLA</div>
+                </div>
+            </div>
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/temp1.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img4">RAVINDRA JAIN</div>
+                </div>
+            </div>
+        </div>
+        <div class="std-col-12 max-ht">
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/Chandrachur-Singh.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img5">CHANDRACHUR SINGH</div>
+                </div>
+            </div>
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/sls.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img6">SRI LAL SHUKLA</div>
+                </div>
+            </div>
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/hasanminhaj.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img7">HASAN MINHAJ</div>
+                </div>
+            </div>
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/gauhar_raza.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img8">GAUHAR RAZA</div>
+                </div>
+            </div>
+        </div>
+        <div class="std-col-12 max-ht">
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/paytm.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img9">VIJAY SHEKHAR SHARMA</div>
+                </div>
+            </div>
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/Kanika-Maheshwari.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img10">KANIKA MAHESHWARI</div>
+                </div>
+            </div>
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/gopal.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img11">GOPAL DAS NEERAJ</div>
+                </div>
+            </div>
+            <div class="std-col-t-3 imgdiv1" style="cursor: pointer;position: relative;">
+                <img class="image" src="/images/shadkhan.jpg"/>
+                <div class="middle">
+                    <div class="texthonour" id="img12">SHAD KHAN</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+</div>
+
+<!--&lt;!&ndash; The Modal &ndash;&gt;-->
+<!--<div id="myModal" class="modal">-->
+    <!--<span class="close">&times;</span>-->
+    <!--<img class="modal-content" id="img01"/>-->
+    <!--<div id="caption"></div>-->
+<!--</div>-->
+
+<br/>
+
+<!-- Footer -->
+<!--<div class="parent">-->
+    <!--<% include template/footer.ejs %>-->
+<!--</div>-->
+
+<!--<script>-->
+    <!--// Get the modal // Common-->
+    <!--var modal = document.getElementById('myModal');-->
+    <!--var modalImg = document.getElementById("img01");-->
+    <!--var captionText = document.getElementById("caption");-->
+
+    <!--var src1 = "/images/Annu-Raj-Singh..jpg";-->
+    <!--var alt1 = "Annu Raj Singh is an Indian shooter from Aligarh. Annu Raj Singh is an Indian sportsman who excels in the game of shooting. She won the gold medal in the women's pair 10 metre air pistol at the 2010 Commonwealth Games with Heena Sidhu. She has taken part in 10 National Championships and has won 27 medals in all. In the 33rd National Games held at 2007, she has won 3 gold medals and 1 silver medal in the pistol event. She was born on 17th February 1984 in Aligarh in Uttar Pradesh.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img1 = document.getElementById('img1');-->
+    <!--img1.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src1;-->
+        <!--captionText.innerHTML = alt1;-->
+    <!--}-->
+
+    <!--var src2 = "/images/bharat-bhushan.jpg";-->
+    <!--var alt2 = "Bharat Bhushan (June 14, 1920 – January 27, 1992) was an Indian actor in Hindi language films, scriptwriter and producer, who is best remembered for playing Baiju Bawra in the 1952 film of the same name. He was born in Meerut, and brought up in Aligarh, Uttar Pradesh.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img2 = document.getElementById('img2');-->
+    <!--img2.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src2;-->
+        <!--captionText.innerHTML = alt2;-->
+    <!--}-->
+
+    <!--var src3 = "/images/piyushcricketer.jpg";-->
+    <!--var alt3 = "Piyush Chawla (Born 24 December 1988 from Aligarh) is an Indian cricketer who has played for the Indian national cricket team. He has also played for the India U-19 team and the Central Zone. He is seen as a leg-spinning all-rounder in domestic cricket, but plays as a specialist bowler in international cricket.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img3 = document.getElementById('img3');-->
+    <!--img3.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src3;-->
+        <!--captionText.innerHTML = alt3;-->
+    <!--}-->
+
+    <!--var src4 = "/images/temp1.jpg";-->
+    <!--var alt4 = "Ravindra Jain (28 February 1944 – 9 October 2015) was an Indian music composer and lyricist. He won the Filmfare Best Music Director Award in 1985. He was born blind and hailed from Aligarh. He was a role model for many people as he overcame his disability of blindness. His first film, Kanch Aur Heera, was released on 31 July 1972.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img4 = document.getElementById('img4');-->
+    <!--img4.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src4;-->
+        <!--captionText.innerHTML = alt4;-->
+    <!--};-->
+
+    <!--var src5 = "/images/Chandrachur-Singh.jpg";-->
+    <!--var alt5 = "Chandrachur Singh is an Indian actor, who works in Bollywood films. He won the Filmfare Award for Best Male Debut for his performance in Maachis. His father is an ex-MP from Khair, Aligarh, Uttar Pradesh and his mother is the daughter of the Maharaja of Bolangir in Odisha. He was a music teacher in Doon School before his acting career took off.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img5 = document.getElementById('img5');-->
+    <!--img5.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src5;-->
+        <!--captionText.innerHTML = alt5;-->
+    <!--};-->
+
+    <!--var src6 = "/images/sls.jpg";-->
+    <!--var alt6 = "Sri Lal Sukla was born on 31-12-1925 in Atrauli, Aligarh in the state of Uttar Pradesh, India. He was an Indian Writer, Novelist, PCS officer & IAS Officer. He has written over 25 books, including Raag Darbari, Makaan, Sooni Ghaati Ka Sooraj, Pehla Padaav and Bisrampur Ka Sant." +-->
+        <!--"He received the Jnanpith Award, the highest Indian literary award, in 2011. His first major award was the Sahitya Akademi Award for his novel Raag Darbari in 1969. He received the Vyas Samman award in 1999 for the novel Bisrampur ka Sant. In 2008, he was awarded the Padma Bhushan by the President of India for his contribution to Indian literature and culture.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img6 = document.getElementById('img6');-->
+    <!--img6.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src6;-->
+        <!--captionText.innerHTML = alt6;-->
+    <!--};-->
+
+    <!--var src8 = "/images/gauhar_raza.jpg";-->
+    <!--var alt8 = "Gauhar Raza (born 17 August 1956) is an Indian scientist by profession, and a leading Urdu poet, social activist and documentary filmmaker working to popularize the understanding of science among general public, known for his films like Jung-e-Azadi, on the India's First War of Independence, and Inqilab (2008) on Bhagat Singh.He was also the honorary director of Jahangirabad Media Institute.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img8 = document.getElementById('img8');-->
+    <!--img8.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src8;-->
+        <!--captionText.innerHTML = alt8;-->
+    <!--};-->
+
+    <!--var src9 = "/images/paytm.jpg";-->
+    <!--var alt9 = "Vijay Shekhar Singh Sharma is an Indian entrepreneur and founder of mobile payments company, Paytm.Sharma was born in Aligarh, Uttar Pradesh. He cites Alibaba's founder Jack Ma and Masayoshi Son of Softbank as his inspirations. He started college at the age of 15. In 1997, while in college, started the website indiasite.net and sold it two years later for $1 million.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img9 = document.getElementById('img9');-->
+    <!--img9.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src9;-->
+        <!--captionText.innerHTML = alt9;-->
+    <!--};-->
+
+    <!--var src10 = "/images/Kanika-Maheshwari.jpg";-->
+    <!--var alt10 = "Kanika Maheshwari (born 24 April 1981) is an Indian television actress. She is best known for her roles in serials like Kahaani Ghar Ghar Kii, Raja Ki Aayegi Baraat, Kabhi Aaye Na Judaai, Viraasat, Geet - Hui Sabse Parayi and Diya Aur Baati Hum. Kanika won Zee Gold Awards (2012-2013) and Star Parivaar Award (2012) for Best Actress in a Negative Role of Meenakshi in Diya Aur Baati Hum. She was born in Aligarh from where her family moved to New Delhi, she is the only child of her parents.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img10 = document.getElementById('img10');-->
+    <!--img10.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src10;-->
+        <!--captionText.innerHTML = alt10;-->
+    <!--};-->
+
+    <!--var src11 = "/images/gopal.jpg";-->
+    <!--var alt11 = "Gopaldas Saxena 'Neeraj (popularly known as Niraj or Neeraj) (born 1925) is a poet and author of Hindi literature. He is also a famous poet of English Kavi sammelan. He was born in the village of Puravali near Mahewa of Etawah in Uttar Pradesh, India on 4 January 1924.[citation needed] He wrote under the pen name 'Neeraj'. His style is considered easy to understand, but has also been compared with high quality Hindi literature. He was awarded Padma Shri in 1991 and Padma Bhushan in 2007.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img11 = document.getElementById('img11');-->
+    <!--img11.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src11;-->
+        <!--captionText.innerHTML = alt11;-->
+    <!--};-->
+
+    <!--var src12 = "/images/shadkhan.jpg";-->
+    <!--var alt12 = "Khan was born in a Pathan family in the Village Nausha in Chharra Rafatpur, in the Aligarh District. He has a B.A. from Aligarh Muslim University (AMU), where he did stage performances in the AMU Drama Club." +-->
+        <!--"He moved to Delhi, where he started with the television industry as an assistant director on the sets of several series like Dastoor(Golden Arch Productions), " +-->
+        <!--"Kahani Shahjahanabad Ki (Badshah Productions) and Lajwaab Talent Show (Star Gazer Advertising)." +-->
+        <!--"Over the years he had worked with producers such as Ashok Buddhiraja senior producer DD National and directors Gurbir Singh Grewal and Mehmood Nazir. After that he worked for Jhankar Tv as a senior producer in 2005 to 2006.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img12 = document.getElementById('img12');-->
+    <!--img12.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src12;-->
+        <!--captionText.innerHTML = alt12;-->
+    <!--};-->
+
+    <!--var src7 = "/images/hasanminhaj.jpg";-->
+    <!--var alt7 = "Hasan Minhaj comes from a Muslim family originally from Aligarh, Uttar Pradesh, India. His parents, Najme and Seema, immigrated to Davis, California, where Minhaj was born and raised." +-->
+        <!--"Minhaj is an American comedian and actor. He is currently a Senior Correspondent on The Daily Show, which he joined in 2014. He was chosen to perform at the 2017 White House Correspondents' Dinner. His first stand-up comedy special, Homecoming King, debuted on Netflix on May 23, 2017.";-->
+    <!--// Get the image and insert it inside the modal - use its "alt" text as a caption-->
+    <!--var img7 = document.getElementById('img7');-->
+    <!--img7.onclick = function(){-->
+        <!--modal.style.display = "block";-->
+        <!--modalImg.src = src7;-->
+        <!--captionText.innerHTML = alt7;-->
+    <!--};-->
+
+    <!--// Get the <span> element that closes the modal-->
+    <!--var span = document.getElementsByClassName("close")[0];-->
+
+    <!--// When the user clicks on <span> (x), close the modal-->
+    <!--span.onclick = function() {-->
+        <!--modal.style.display = "none";-->
+    <!--}-->
+<!--</script>-->
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="footer">
+<head>
+    <link rel="stylesheet" href="/stylesheets/standards.css"/>
+</head>
+<style type="text/css">
+    a {
+        color: white;
+    }
+
+    @media only screen and (max-width: 375px) {
+        /* For desktop: */
+        #footer4 {
+            width: 33.3333%;
+        }
+    }
+</style>
+<body>
+<div class="std-col-12" style="background-color: #3a3a3a;">
+    <div class="std-col-4" id="footer4">
+        <a href="/about" title="About Us">About Us</a>
+    </div>
+    <div class="std-col-4" id="footer4">
+        <a href="/privacypolicy" title="pp">Privacy Policy</a>
+    </div>
+    <div class="std-col-4" id="footer4">
+        <a href="/contactus" title="Contactus">Contact Us</a>
+    </div>
+</div>
+</body>
+</html>

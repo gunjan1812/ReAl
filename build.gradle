@@ -1,0 +1,27 @@
+group 'com.teamtreehouse'
+version '1.0-SNAPSHOT'
+
+buildscript{
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
+        classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.5.8.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+}

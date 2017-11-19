@@ -1,0 +1,214 @@
+/*Mobile query CSS*/
+/* The hero image */
+.aboutus-head-image {
+    /* Set a specific height */
+    height: 100%;
+    padding: 20%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    /*margin-top: 25px;*/
+}
+
+div.std-col-4 {
+    width: 100%;
+    float: left;
+}
+
+div.tab {
+    background-color: #0A416B;
+}
+
+div.tab:hover {
+    background-color: #0f8ad3;
+}
+
+div.tab:active {
+    background-color: #0f8ad3;
+}
+
+.diva{
+     -webkit-animation: fadeEffect 1s;
+     animation: fadeEffect 1s; /* Fading effect takes 1 second */
+ }
+.divb{
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+.divc{
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+.test{
+ display: none;
+}
+
+.tablink {
+    background-color: transparent;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 100%;
+    font-weight: normal;
+}
+
+.image {
+    height: 33%;
+}
+
+.signature {
+    color: white;
+    font-family: 'Comic Sans MS';
+    margin-right: 15%;
+    padding-bottom: 5%;
+    text-align: right;
+    font-size: medium;
+}
+
+.paragraph {
+    color: white;
+    font-family: 'Comic Sans MS';
+    margin: 5%;
+    padding: 5%;
+    text-align: left;
+    font-size: medium;
+}
+
+/*Media query CSS for Tablet*/
+@media only screen and (min-width: 412px) {
+    div.std-col-4 {
+        width: 100%;
+    }
+
+    .tablink {
+        background-color: transparent;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 14px;
+        width: 100%;
+        font-weight: normal;
+    }
+
+    .image {
+        padding-top: 50%;
+        height: 50%;
+    }
+
+    .signature {
+        color: white;
+        font-family: 'Comic Sans MS';
+        margin-right: 10%;
+        padding-bottom: 5%;
+        text-align: right;
+        font-size: medium;
+    }
+
+    .paragraph {
+        color: white;
+        font-family: 'Comic Sans MS';
+        margin: 5%;
+        padding: 5%;
+        text-align: left;
+        font-size: medium;
+    }
+}
+
+
+/*Media query CSS for Tablet*/
+@media only screen and (min-width: 600px) {
+    div.std-col-4 {
+        width: 33.3333%;
+    }
+
+    .tablink {
+        background-color: transparent;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 100%;
+        font-weight: normal;
+    }
+
+    .image {
+        padding-top: 50%;
+        height: 50%;
+    }
+
+    .signature {
+        color: white;
+        font-family: 'Comic Sans MS';
+        margin-right: 10%;
+        padding-bottom: 5%;
+        text-align: right;
+        font-size: medium;
+    }
+
+    .paragraph {
+        color: white;
+        font-family: 'Comic Sans MS';
+        margin: 5%;
+        padding: 5%;
+        text-align: left;
+        font-size: medium;
+    }
+}
+
+/*Media query CSS for Desktop*/
+@media only screen and (min-width: 768px) {
+    div.std-col-4 {
+        width: 33.3333%;
+    }
+
+    .tablink {
+        background-color: transparent;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 100%;
+        font-weight: normal;
+    }
+
+    .image {
+        padding-top: 8%;
+        height: 100%;
+    }
+
+    .signature {
+        color: white;
+        font-family: 'Comic Sans MS';
+        margin-right: 15%;
+        padding-bottom: 5%;
+        text-align: right;
+        font-size: medium;
+    }
+
+    .paragraph {
+        color: white;
+        font-family: 'Comic Sans MS';
+        margin: 5%;
+        padding: 5%;
+        text-align: left;
+        font-size: medium;
+    }
+}
