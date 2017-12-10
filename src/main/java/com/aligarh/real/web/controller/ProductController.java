@@ -286,7 +286,7 @@ public class ProductController extends RequestInterceptor {
         // Get list of PRODUCTs whose description contains value specified by q
         List<Product> products = new ArrayList<>();
         productService.findAll().forEach(product -> {
-            if (product.getDescription().indexOf(q) != -1) {
+            if (product.getDescription().toLowerCase().indexOf(q.toLowerCase()) != -1) {
                 products.add(product);
             }
         });
