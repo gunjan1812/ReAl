@@ -120,8 +120,13 @@ public class ProductController extends RequestInterceptor {
                     faves.add(product);
                 }
             });*/
-            logger.info(" Fav Product List :" + member.getFavoriteProducts());
-            model.addAttribute("products", member.getFavoriteProducts());
+
+
+            List<Product> list = !member.getFavoriteProducts().isEmpty()?member.getFavoriteProducts():new ArrayList<Product>(0);
+            logger.info(" Fav Product List1 :" + list);
+
+            logger.info(" Fav Product List2 :" + member.getFavoriteProducts());
+            model.addAttribute("products", list);
             model.addAttribute("user", member); // Static username
             return "product/favorites";
         }
@@ -142,7 +147,7 @@ public class ProductController extends RequestInterceptor {
             User member = userService.findById(Long.parseLong(mobileNum));
             if (!StringUtils.isEmptyOrWhitespace(mobileNum) && null != member) {
                 guestMember = false;
-                product.setUser(member);
+//                product.setUser(member);
             }
         }
         productService.save(product, file);
@@ -231,25 +236,24 @@ public class ProductController extends RequestInterceptor {
         // TODO: With PRODUCT whose id is gifId, toggle the favorite field
         String message = product.isFavorite() ? "Removed from favorites" : "Marked as favorite";
 
-        productService.toggleFavorite(product);
-
-        boolean isFav = product.isFavorite();
-        List<Product> favProducts = new ArrayList<>();
-
         String number = getCookieValue(request, "mobileNumber");
         if(null != number && !StringUtils.isEmptyOrWhitespace(number)) {
             User member = userService.findById(Long.parseLong(number));
-            if (isFav) {
-                favProducts.add(product);
+            List<Product> favoriteProducts = member.getFavoriteProducts();
+            if (!favoriteProducts.contains(product)) {
+                favoriteProducts.add(product);
             }
-            List<Product> favPro = member.getFavoriteProducts();
-            favProducts.addAll(favPro);
-            member.setFavoriteProducts(favProducts);
+            else{
+                favoriteProducts.remove(product);
+            }
+            productService.toggleFavorite(product);
+            member.setFavoriteProducts(favoriteProducts);
+            userService.addUser(member);
         }
 
         //String number = getCookieValue(request, "mobileNumber");
         logger.info(" User number :" + number);
-        if(null != number && !StringUtils.isEmptyOrWhitespace(number)) {
+        /*if(null != number && !StringUtils.isEmptyOrWhitespace(number)) {
             User member = userService.findById(Long.parseLong(number));
             logger.info(" User is a Member :" + member);
             List<Product> faves = new ArrayList<>();
@@ -263,7 +267,7 @@ public class ProductController extends RequestInterceptor {
             //model.addAttribute("products", faves);
             //model.addAttribute("user", member); // Static username
             //return "product/favorites";
-        }
+        }*/
 
         redirectAttributes.addFlashAttribute("flash", new FlashMessage(message, FlashMessage.Status.SUCCESS));
 

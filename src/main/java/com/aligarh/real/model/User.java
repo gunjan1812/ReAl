@@ -2,10 +2,7 @@ package com.aligarh.real.model;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +12,8 @@ public class User {
     @Id
     private Long mobileNumber;
 
-    @OneToMany(mappedBy = "user")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_product", joinColumns = { @JoinColumn(name = "mobileNumber") }, inverseJoinColumns = { @JoinColumn(name = "id") })
     private List<Product> favoriteProducts = new ArrayList<>();
 
     @Lob
@@ -90,7 +88,6 @@ public class User {
     public String toString() {
         return "User{" +
                 "mobileNumber=" + mobileNumber +
-                ", bytes=" + Arrays.toString(bytes) +
                 ", gender='" + gender + '\'' +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +

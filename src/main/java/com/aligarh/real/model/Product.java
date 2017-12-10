@@ -17,9 +17,6 @@ public class Product {
     @ManyToOne
     private Category category;
 
-    @ManyToOne
-    private User user;
-
     private LocalDateTime dateUploaded = LocalDateTime.now();
     private String username;
     private boolean favorite;
@@ -120,11 +117,16 @@ public class Product {
         this.hash = hash;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", dateUploaded=" + dateUploaded +
+                ", username='" + username + '\'' +
+                ", favorite=" + favorite +
+                ", hash='" + hash + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
+                '}';
     }
 }
