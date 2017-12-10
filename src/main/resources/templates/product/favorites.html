@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('favorites')"></head>
+<body>
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: searchbar"></div>
+<div th:replace="layout :: flash"></div>
+<div class="row user-meta">
+    <div class="col s3 l12">
+        <img class="circle" th:src="@{/sImages/me.jpg}" alt="avatar" />
+        <!--<img class="circle" th:src="@{user.}" alt="avatar" />-->
+    </div>
+    <div class="col s9= l12">
+        <h2 th:text="${user.username}">User</h2>
+        <div class="meta" th:text="|${#lists.size(products)} Favorites|"></div>
+    </div>
+</div>
+<div class="images container">
+    <div class="divider"></div>
+    <div class="row">
+        <div th:each="product : ${products}" class="col s12 l4">
+            <a th:href="@{|/products/${product.id}|}">
+                <img th:src="@{|/products/${product.id}.product|}" />
+                <a href="#" th:class="(${product.favorite}? 'un' : '') + 'mark favorite'"></a>
+            </a>
+        </div>
+    </div>
+</div>
+<div th:replace="layout :: scripts"></div>
+</body>
+</html>

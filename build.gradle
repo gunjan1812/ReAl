@@ -24,4 +24,11 @@ repositories {
 dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+    compile 'org.hashids:hashids:1.0.1'
+    compile 'org.springframework:spring-orm:4.2.5.RELEASE'
+    compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    //data base connection pooling -> allows app to reuse database connection objects since those objects take some time to
+    // construct depending on estabilishing a connection to database
+    compile 'org.apache.tomcat:tomcat-dbcp:8.0.32'
+    compile 'com.h2database:h2:1.4.191'
 }

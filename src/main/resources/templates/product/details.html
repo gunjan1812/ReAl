@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head(${product.description})"></head>
+<body>
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: searchbar"></div>
+<div th:replace="layout :: flash"></div>
+<div class="image-detail container">
+    <div class="frame row">
+        <div class="col s12 actions">
+            <img th:src="@{|/products/${product.id}.product|}" alt="product" />
+            <form th:action="@{|/products/${product.id}/favorite|}" method="post">
+                <button type="submit" th:disabled="${guestMember}" th:class="(${product.favorite}? 'un' : '') + 'mark favorite'"></button>
+            </form>
+        </div>
+    </div>
+    <div class="meta row">
+        <div class="col s10 l11 push-l1">
+            <h4 th:text="${product.description}"></h4>
+            <div>
+                <span class="user" th:text="|${product.timeSinceUploaded} ago by ${product.username}|"></span>
+                <span class="category"><a th:href="@{|/categories/${product.category.id}|}" th:text="${product.category.name}" th:style="|color:${product.category.colorCode}|"></a></span>
+                <span class="contact"><a th:text="|${product.mobileNumber}|" th:style="|color:${product.category.colorCode}|"/></span>
+                <div class="actions">
+                    <a th:href="@{|/products/${product.id}/edit|}">Edit</a>
+                    <form th:action="@{|/products/${product.id}/delete|}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s2 l1 pull-l11">
+            <img class="circle" th:src="@{/sImages/me.jpg}" alt="avatar" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 l11 offset-l1">
+            <div class="divider"></div>
+        </div>
+        <div class="col s12 l8 offset-l1">
+            <div class="share">
+                <a class="btn right" href="#">Copy</a>
+                <span th:text="|http://product.fy/${product.hash}|">URL</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="layout :: scripts"></div>
+</body>
+</html>
