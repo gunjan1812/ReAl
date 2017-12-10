@@ -12,10 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
-
-<!--<div>-->
-    <!--<% include template/navigationBar.ejs %>-->
-<!--</div>-->
+<div class="std-header">
+    <div th:replace="/common/navigationBar :: header"/>
+</div>
 
 <div class="std-top-row">
     <h4><strong>Our Heroes - You made us Proud!!</strong></h4>
@@ -258,6 +257,8 @@
         <!--modal.style.display = "none";-->
     <!--}-->
 <!--</script>-->
-
+<div style="width: 100%">
+    <div th:replace="/common/footer :: footer"/>
+</div>
 </body>
 </html>

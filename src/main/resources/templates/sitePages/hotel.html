@@ -23,7 +23,9 @@
 </head>
 
 <body>
-
+<div class="std-header">
+    <div th:replace="/common/navigationBar :: header"/>
+</div>
 <div class="std-top-row">
     <div class="std-col-12">
         <div class="std-section-bleed">
@@ -89,9 +91,10 @@
                 </div>
             </div>
         </section>
-
     </div>
 </div>
-
+<div style="width: 100%">
+    <div th:replace="/common/footer :: footer"/>
+</div>
 </body>
 </html>

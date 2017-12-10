@@ -14,12 +14,15 @@
 
     <meta charset="utf-8" />
     <link rel="icon" th:href="@{/favicon.png}" />
+    <link rel="stylesheet" th:href="@{/stylesheet/standards.css}" />
     <link rel="stylesheet" th:href="@{/stylesheet/default.css}" />
 
     <title>Aligarh | Category</title>
 </head>
 <body>
-
+<div class="std-header">
+    <div th:replace="/common/navigationBar :: header"/>
+</div>
 <div class="std-top-row">
     <div class="std-section-bleed" id="hero">
         <div class="hero-image std-parallax">
@@ -196,6 +199,9 @@
         </div>
 
     </div>
+</div>
+<div style="width: 100%">
+    <div th:replace="/common/footer :: footer"/>
 </div>
 </body>
 </html>

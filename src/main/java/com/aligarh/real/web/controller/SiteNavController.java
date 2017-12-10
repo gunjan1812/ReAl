@@ -1,39 +1,49 @@
 package com.aligarh.real.web.controller;
 
 import com.aligarh.real.RequestInterceptor;
-import com.aligarh.real.data.CategoryRepository;
-import com.aligarh.real.data.GifRepository;
+import com.aligarh.real.data.EventRepository;
+import com.aligarh.real.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 public class SiteNavController extends RequestInterceptor {
     @Autowired
-    private CategoryRepository categoryRepository;
+    private EventRepository eventRepository;
 
-    @Autowired
-    private GifRepository gifRepository;
-
-   /* @RequestMapping("/")
+    @RequestMapping("/home")
     public String home(){
-        return "index";
-    }*/
+        return "sitePages/index";
+    }
 
-    /*@RequestMapping("/categories")
-    public String listCategories(ModelMap modelMap) {
-        List<EventCategory> categories = categoryRepository.getAllCategories();
-        modelMap.put("categories", categories);
-        return "categories";
-    }*/
+    @RequestMapping("/hotel")
+    public String hotel(){
+        return "sitePages/hotel";
+    }
 
-    /*@RequestMapping("/category/{id}")
-    public String category(@PathVariable int id, ModelMap modelMap) {
-        EventCategory category = categoryRepository.findById(id);
-        modelMap.put("category",category);
+    @RequestMapping("/event")
+    public String event(){
+        return "sitePages/event";
+    }
 
-        List<Gif> gifs = gifRepository.findByCategoryId(id);
-        modelMap.put("gifs",gifs);
+    @RequestMapping("/about")
+    public String about(){
+        return "sitePages/about";
+    }
 
-        return "category";
-    }*/
+    @RequestMapping("/honour")
+    public String honour(){
+        return "sitePages/honour";
+    }
+
+    @RequestMapping("/events")
+    public String listEvents(ModelMap modelMap){
+        List<Event> allEvents = eventRepository.getAllEvents();
+        modelMap.put("events",allEvents);
+        return "sitePages/events";
+    }
 }
