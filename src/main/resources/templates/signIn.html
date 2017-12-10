@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('upload')"></head>
+<body>
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: flash"></div>
+<div class="container upload">
+    <div class="row">
+        <div class="col s12">
+            <h2 th:text="${heading}">SignIn</h2>
+            <div class="subtitle">SignIn to access your favorites.</div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <form th:action="@{${action}}" th:object="${user}" method="post" enctype="multipart/form-data">
+        <!--<input type="hidden" th:field="*{mobileNumber}"/>-->
+        <div class="row">
+            <div class="col s12 l8">
+                <input type="number" th:field="*{mobileNumber}" placeholder="MobileNumber"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l8">
+                <input type="password" th:field="*{password}" placeholder="Password"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button type="submit" class="button">Sign In</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:replace="layout :: scripts"></div>
+</body>
+</html>

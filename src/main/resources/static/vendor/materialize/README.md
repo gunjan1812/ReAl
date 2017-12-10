@@ -1,4 +1,4 @@
-![alt tag](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif)
+![alt tag](https://raw.github.com/dogfalo/materialize/master/products/materialize.product)
 ===========
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -40,7 +40,7 @@ Chrome 35+, Firefox 31+, Safari 7+, IE 10+
   - Waves no longer breaks on SVG's
 
 - v0.95.3 (Feb 25, 2015)
-  - Parallax image loading / responsiveness fixes
+  - Parallax product loading / responsiveness fixes
   - Date picker supports month/year as dropdown
   - Dismissable collection items
   - Avatar collection items

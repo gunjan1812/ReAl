@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('categories')"></head>
+<body>
+    <div th:replace="layout :: nav"></div>
+    <div th:replace="layout :: searchbar"></div>
+    <div th:replace="layout :: flash"></div>
+    <div class="images container">
+        <h2 th:text="${category.name}" th:style="|color:${category.colorCode}|"></h2>
+        <div class="row">
+            <div th:each="product : ${category.products}" class="col s12 l4">
+                <a th:href="@{|/products/${product.id}|}">
+                    <img th:src="@{|/products/${product.id}.product|}" />
+                    <a type="submit" th:disabled="${guestMember}" th:class="(${product.favorite}? 'un' : '') + 'mark favorite'"></a>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div th:replace="layout :: scripts"></div>
+</body>
+</html>
