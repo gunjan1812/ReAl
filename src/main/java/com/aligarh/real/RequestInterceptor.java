@@ -1,5 +1,6 @@
 package com.aligarh.real;
 
+import com.aligarh.real.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
@@ -110,5 +111,12 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
             return ipFromHeader;
         }
         return request.getRemoteAddr();
+    }
+
+    public boolean isUserAdmin(User member){
+        if((member.getMobileNumber().toString()).equals("9999999999")){
+            return true;
+        }
+        return false;
     }
 }

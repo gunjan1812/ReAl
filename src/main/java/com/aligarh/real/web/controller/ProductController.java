@@ -59,7 +59,7 @@ public class ProductController extends RequestInterceptor {
 
         String mobileNum = getCookieValue(request, "mobileNumber");
         boolean guestMember = true;
-        if(!StringUtils.isEmptyOrWhitespace(mobileNum) && null != userService.findById(Long.parseLong(mobileNum))){
+        if (!StringUtils.isEmptyOrWhitespace(mobileNum) && null != userService.findById(Long.parseLong(mobileNum))) {
             guestMember = false;
         }
         model.addAttribute("guestMember", guestMember);
@@ -84,7 +84,7 @@ public class ProductController extends RequestInterceptor {
 
         String mobileNum = getCookieValue(request, "mobileNumber");
         boolean guestMember = true;
-        if(!StringUtils.isEmptyOrWhitespace(mobileNum) && null != userService.findById(Long.parseLong(mobileNum))){
+        if (!StringUtils.isEmptyOrWhitespace(mobileNum) && null != userService.findById(Long.parseLong(mobileNum))) {
             guestMember = false;
         }
         model.addAttribute("guestMember", guestMember);
@@ -107,31 +107,22 @@ public class ProductController extends RequestInterceptor {
     // Favorites - index of all GIFs marked favorite
     @RequestMapping("/favorites")
     public String favorites(Model model, HttpSession httpSession, HttpServletRequest request) {
-        // Get list of all GIFs marked as favorite
+        // Get list of all Products marked as favorite for the user
         String number = getCookieValue(request, "mobileNumber");
         logger.info(" User number :" + number);
-        if(null != number && !StringUtils.isEmptyOrWhitespace(number)) {
+        if (null != number && !StringUtils.isEmptyOrWhitespace(number)) {
             User member = userService.findById(Long.parseLong(number));
             logger.info(" User is a Member :" + member);
-            /*List<Product> faves = new ArrayList<>();
-            productService.findAll().forEach(product -> {
-                if (null != product.getUser() && null != product.getUser().getMobileNumber()
-                        && product.getUser().getMobileNumber().toString().equals(number) && product.isFavorite()) {
-                    faves.add(product);
-                }
-            });*/
 
-
-            List<Product> list = !member.getFavoriteProducts().isEmpty()?member.getFavoriteProducts():new ArrayList<Product>(0);
+            List<Product> list = !member.getFavoriteProducts().isEmpty() ? member.getFavoriteProducts() : new ArrayList<Product>(0);
             logger.info(" Fav Product List1 :" + list);
 
             logger.info(" Fav Product List2 :" + member.getFavoriteProducts());
             model.addAttribute("products", list);
             model.addAttribute("user", member); // Static username
             return "product/favorites";
-        }
-        else{
-            logger.info(" User is not a Member :" );
+        } else {
+            logger.info(" User is not a Member :");
             return "redirect:/signIn";
         }
     }
@@ -139,15 +130,14 @@ public class ProductController extends RequestInterceptor {
     // Upload a new PRODUCT
     @RequestMapping(value = "/products", method = RequestMethod.POST)
     public String addProduct(Product product, @RequestParam MultipartFile file, RedirectAttributes redirectAttributes,
-                           HttpServletResponse response, HttpServletRequest request) {
-        // TODO: Upload new PRODUCT if data is valid
+                             HttpServletResponse response, HttpServletRequest request) {
+        // Upload new PRODUCT if data is valid
         String mobileNum = getCookieValue(request, "mobileNumber");
         boolean guestMember = true;
-        if(null != mobileNum) {
+        if (null != mobileNum) {
             User member = userService.findById(Long.parseLong(mobileNum));
             if (!StringUtils.isEmptyOrWhitespace(mobileNum) && null != member) {
                 guestMember = false;
-//                product.setUser(member);
             }
         }
         productService.save(product, file);
@@ -160,7 +150,7 @@ public class ProductController extends RequestInterceptor {
         // Add flash message for success
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("PRODUCT successfully uploaded", FlashMessage.Status.SUCCESS));
 
-        // TODO: Redirect browser to new PRODUCT's detail view
+        // Redirect browser to new PRODUCT's detail view
         return String.format("redirect:/products/%s", product.getId());
     }
 
@@ -187,14 +177,13 @@ public class ProductController extends RequestInterceptor {
         model.addAttribute("heading", "Edit");
         model.addAttribute("submit", "Update");
         model.addAttribute("categories", categoryService.findAll());
-
         return "product/form";
     }
 
     // Update an existing PRODUCT
     @RequestMapping(value = "/products/{productId}", method = RequestMethod.POST)
     public String updateProduct(@Valid Product product, @RequestParam MultipartFile file,
-                              BindingResult result, RedirectAttributes redirectAttributes, HttpSession httpSession) {
+                                BindingResult result, RedirectAttributes redirectAttributes, HttpSession httpSession) {
         // TODO: Update PRODUCT if data is valid
         if (result.hasErrors()) {
             // Include validation errors upon redirect
@@ -237,13 +226,12 @@ public class ProductController extends RequestInterceptor {
         String message = product.isFavorite() ? "Removed from favorites" : "Marked as favorite";
 
         String number = getCookieValue(request, "mobileNumber");
-        if(null != number && !StringUtils.isEmptyOrWhitespace(number)) {
+        if (null != number && !StringUtils.isEmptyOrWhitespace(number)) {
             User member = userService.findById(Long.parseLong(number));
             List<Product> favoriteProducts = member.getFavoriteProducts();
             if (!favoriteProducts.contains(product)) {
                 favoriteProducts.add(product);
-            }
-            else{
+            } else {
                 favoriteProducts.remove(product);
             }
             productService.toggleFavorite(product);
@@ -251,24 +239,7 @@ public class ProductController extends RequestInterceptor {
             userService.addUser(member);
         }
 
-        //String number = getCookieValue(request, "mobileNumber");
         logger.info(" User number :" + number);
-        /*if(null != number && !StringUtils.isEmptyOrWhitespace(number)) {
-            User member = userService.findById(Long.parseLong(number));
-            logger.info(" User is a Member :" + member);
-            List<Product> faves = new ArrayList<>();
-            productService.findAll().forEach(productI -> {
-                if (null != productI.getUser() && null != productI.getUser().getMobileNumber()
-                        && productI.getUser().getMobileNumber().toString().equals(number) && productI.isFavorite()) {
-                    faves.add(productI);
-                }
-            });
-
-            //model.addAttribute("products", faves);
-            //model.addAttribute("user", member); // Static username
-            //return "product/favorites";
-        }*/
-
         redirectAttributes.addFlashAttribute("flash", new FlashMessage(message, FlashMessage.Status.SUCCESS));
 
         // TODO: Redirect to PRODUCT's detail view
@@ -286,7 +257,7 @@ public class ProductController extends RequestInterceptor {
         // Get list of PRODUCTs whose description contains value specified by q
         List<Product> products = new ArrayList<>();
         productService.findAll().forEach(product -> {
-            if (product.getDescription().toLowerCase().indexOf(q.toLowerCase()) != -1) {
+            if ((product.getDescription().toLowerCase()).indexOf(q.toLowerCase()) != -1) {
                 products.add(product);
             }
         });

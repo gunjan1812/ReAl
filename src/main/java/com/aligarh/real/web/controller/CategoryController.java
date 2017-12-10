@@ -2,6 +2,7 @@ package com.aligarh.real.web.controller;
 
 import com.aligarh.real.RequestInterceptor;
 import com.aligarh.real.model.Category;
+import com.aligarh.real.model.User;
 import com.aligarh.real.service.CategoryService;
 import com.aligarh.real.service.UserService;
 import com.aligarh.real.web.Color;
@@ -35,9 +36,22 @@ public class CategoryController extends RequestInterceptor {
     // Index of all categories
     @SuppressWarnings("unchecked")
     @RequestMapping("/categories")
-    public String listCategories(Model model) {
+    public String listCategories(Model model, HttpServletRequest request) {
         // Get all categories
         List<Category> categories = categoryService.findAll();
+
+        String number = getCookieValue(request, "mobileNumber");
+        logger.info(" User number :" + number);
+        if (null != number && !StringUtils.isEmptyOrWhitespace(number)) {
+            User member = userService.findById(Long.parseLong(number));
+            logger.info(" User is a Member :" + member);
+            model.addAttribute("isAdmin", isUserAdmin(member));
+        }
+        else{
+            model.addAttribute("isAdmin", false);
+        }
+        logger.info("isAdmin: " + model.asMap().get("isAdmin"));
+
         model.addAttribute("categories", categories);
         return "category/index";
     }
@@ -46,7 +60,6 @@ public class CategoryController extends RequestInterceptor {
     @RequestMapping("/categories/{categoryId}")
     public String category(@PathVariable Long categoryId, Model model, HttpServletRequest request) {
         // Get the category given by categoryId
-
         String mobileNum = getCookieValue(request, "mobileNumber");
         boolean guestMember = true;
         if(!StringUtils.isEmptyOrWhitespace(mobileNum) && null != userService.findById(Long.parseLong(mobileNum))){
@@ -70,7 +83,6 @@ public class CategoryController extends RequestInterceptor {
         model.addAttribute("action", "/categories");
         model.addAttribute("heading", "New Category");
         model.addAttribute("submit", "Add");
-
         return "category/form";
     }
 
@@ -86,7 +98,6 @@ public class CategoryController extends RequestInterceptor {
         model.addAttribute("action", String.format("/categories/%s", categoryId));
         model.addAttribute("heading", "Edit Category");
         model.addAttribute("submit", "Update");
-
         return "category/form";
     }
 
@@ -104,9 +115,7 @@ public class CategoryController extends RequestInterceptor {
             // Redirect back to the form (In location header -> /categories/add)
             return String.format("redirect:/categories/%s/edit", category.getId());
         }
-
         categoryService.save(category);
-
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Category successfully updated!", FlashMessage.Status.SUCCESS));
 
         // Redirect browser to /categories
@@ -127,9 +136,7 @@ public class CategoryController extends RequestInterceptor {
             // Redirect back to the form (In location header -> /categories/add)
             return "redirect:/categories/add";
         }
-
         categoryService.save(category);
-
         redirectAttributes.addFlashAttribute("flash", new FlashMessage("Category successfully added!", FlashMessage.Status.SUCCESS));
 
         // Redirect browser to /categories

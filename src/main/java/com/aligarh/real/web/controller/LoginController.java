@@ -57,7 +57,6 @@ public class LoginController extends RequestInterceptor {
         if (result.hasErrors()) {
             // Include validation errors upon redirect
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.image", result);
-
             redirectAttributes.addFlashAttribute("user", user);
             redirectAttributes.addFlashAttribute("flash", new FlashMessage("Invalid input!", FlashMessage.Status.FAILURE));
             logger.info(" user details invalid ? :" + user);
@@ -116,15 +115,11 @@ public class LoginController extends RequestInterceptor {
 
         if (null != member) {
             logger.info(" user credentials valid :" + member);
-
-            //Cookie cookie = new Cookie("username", user.getUsername());
-            //cookie.setMaxAge(1000); //set expire time to 1000 sec
             response.addCookie(new Cookie("username", member.getUsername())); //put cookie in response
             response.addCookie(new Cookie("mobileNumber", member.getMobileNumber().toString())); //put cookie in response
 
             redirectAttributes.addFlashAttribute("flash", new FlashMessage(member.getUsername() + " successfully loggedIn",
                     FlashMessage.Status.SUCCESS));
-
             redirectAttributes.addFlashAttribute("user", member);
             return "redirect:/";
         }
@@ -143,7 +138,6 @@ public class LoginController extends RequestInterceptor {
         logger.info("cookie username::value " + username);
         String referrer = request.getHeader("Referer");
         logger.info("referrer " + referrer);
-
         boolean addClass = true;
 
         if (null != username) {
