@@ -17,17 +17,12 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.thymeleaf.util.MapUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class LoginController extends RequestInterceptor {
@@ -45,15 +40,6 @@ public class LoginController extends RequestInterceptor {
 
     // Initializing Logger
     protected final Log logger = LogFactory.getLog(getClass());
-
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("ImageInterceptor: REQUEST Intercepted for URI: "
-                + request.getRequestURI());
-        String username = request.getAttribute("username").toString();
-        request.setAttribute("username", "sample");
-        return true;
-    }
 
     @RequestMapping("/signUp")
     public String signUpPage(Model model, RedirectAttributes redirectAttributes) {
@@ -78,31 +64,29 @@ public class LoginController extends RequestInterceptor {
             return "redirect:/signUp";
         }
         userService.addUser(user);
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage(user.getUsername()+" successfully added!", FlashMessage.Status.SUCCESS));
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage(user.getUsername() + " successfully added!", FlashMessage.Status.SUCCESS));
         String referrer = req.getHeader("Referer");
         logger.info("referrer " + referrer);
-        if(null != referrer && !StringUtils.hasText("/signUp")) {
+        if (null != referrer && !StringUtils.hasText("/signUp")) {
             return String.format("redirect:%s", referrer);
-        }
-        else{
+        } else {
             return "redirect:/";
         }
     }
 
     @RequestMapping(value = "/signIn")
     public String signIn(Model model, HttpServletRequest req, RedirectAttributes redirectAttributes) {
-        String num = getCookieValue(req,"mobileNumber");
+        String num = getCookieValue(req, "mobileNumber");
         Long mobileNumber;
-        if(null != num && !StringUtils.isEmpty(num)) {
+        if (null != num && !StringUtils.isEmpty(num)) {
             mobileNumber = Long.parseLong(num);
             User member = userService.findById(mobileNumber);
-            if(null != member){
+            if (null != member) {
                 String referrer = req.getHeader("Referer");
                 logger.info("referrer " + referrer);
-                if(null != referrer) {
+                if (null != referrer) {
                     return String.format("redirect:%s", req.getHeader("Referer"));
-                }
-                else{
+                } else {
                     return "redirect:/";
                 }
             }
@@ -116,7 +100,7 @@ public class LoginController extends RequestInterceptor {
         return "signIn";
     }
 
-    @RequestMapping(value = "/signInValidate",  method = RequestMethod.POST)
+    @RequestMapping(value = "/signInValidate", method = RequestMethod.POST)
     public String signInValidate(@Valid User user, BindingResult result,
                                  RedirectAttributes redirectAttributes, HttpServletResponse response) {
         if (result.hasErrors()) {
@@ -130,7 +114,7 @@ public class LoginController extends RequestInterceptor {
         }
         User member = userService.findById(user.getMobileNumber());
 
-        if(null != member){
+        if (null != member) {
             logger.info(" user credentials valid :" + member);
 
             //Cookie cookie = new Cookie("username", user.getUsername());
@@ -138,14 +122,14 @@ public class LoginController extends RequestInterceptor {
             response.addCookie(new Cookie("username", member.getUsername())); //put cookie in response
             response.addCookie(new Cookie("mobileNumber", member.getMobileNumber().toString())); //put cookie in response
 
-            redirectAttributes.addFlashAttribute("flash", new FlashMessage(member.getUsername()+" successfully loggedIn",
+            redirectAttributes.addFlashAttribute("flash", new FlashMessage(member.getUsername() + " successfully loggedIn",
                     FlashMessage.Status.SUCCESS));
 
             redirectAttributes.addFlashAttribute("user", member);
             return "redirect:/";
         }
         logger.info(" user details Not found in DB:" + user);
-        redirectAttributes.addFlashAttribute("flash", new FlashMessage(user.getMobileNumber()+" Invalid Credentials!",
+        redirectAttributes.addFlashAttribute("flash", new FlashMessage(user.getMobileNumber() + " Invalid Credentials!",
                 FlashMessage.Status.FAILURE));
         return "redirect:/signIn";
     }
@@ -155,44 +139,32 @@ public class LoginController extends RequestInterceptor {
     public String toggleLike(HttpServletRequest request, RedirectAttributes redirectAttributes) {
         // Return image data as byte array of the IMAGE whose id is gifId
         int count;
-        Map<String, String> cookieMap = new HashMap<>();
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            Arrays.stream(cookies)
-                    .forEach(c -> {
-                        System.out.println(c.getName() + "=" + c.getValue());
-                        cookieMap.put(c.getName(), c.getValue());
-                    });
-        }
-        logger.info("cookie username::value " + cookieMap.get("username"));
+        String username = getCookieValue(request, "username");
+        logger.info("cookie username::value " + username);
         String referrer = request.getHeader("Referer");
         logger.info("referrer " + referrer);
 
         boolean addClass = true;
 
-        if (!MapUtils.isEmpty(cookieMap)) {
-            if (null != cookieMap.get("username") && !StringUtils.isEmpty(cookieMap.get("username"))) {
-                String username = cookieMap.get("username");
-                System.out.println(username);
+        if (null != username) {
+            Like liker = likeService.findAllLikers().stream().filter(isLiker ->
+                    username.equalsIgnoreCase(isLiker.getUsername())).findAny().orElse(null);
 
-                Like liker = likeService.findAllLikers().stream().filter(isLiker ->
-                        username.equalsIgnoreCase(isLiker.getUsername())).findAny().orElse(null);
-
-                if (null != liker) {
-                    logger.info(liker.getUsername() + " user exists in db");
-                    likeService.removeLiker(liker);
-                } else {
-                    logger.info(cookieMap.get("username") + " user doesn't exists in db");
-                    Like li = new Like(cookieMap.get("username"));
-                    System.out.println(li);
-                    likeService.addLiker(li);
-                    addClass = false;
-                }
+            if (null != liker) {
+                logger.info(liker.getUsername() + " user exists in db");
+                likeService.removeLiker(liker);
             } else {
-                logger.info("redirecting to SignIn page");
-                return "redirect:/signUp";
+                logger.info(username + " user doesn't exists in db");
+                Like li = new Like(username);
+                logger.info(li + " Like");
+                likeService.addLiker(li);
+                addClass = false;
             }
+        } else {
+            logger.info("redirecting to SignUp page");
+            return "redirect:/signUp";
         }
+
         count = likeService.getCount();
         request.setAttribute("hitcount", count);
         redirectAttributes.addFlashAttribute("aclass", addClass);
