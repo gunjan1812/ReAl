@@ -54,4 +54,12 @@ public class Category {
         return products;
     }
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", colorCode='" + colorCode + '\'' +
+                '}';
+    }
 }
